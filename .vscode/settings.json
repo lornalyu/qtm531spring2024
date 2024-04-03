@@ -2,5 +2,7 @@
     "editor.wordWrap": "wordWrapColumn",
     "diffEditor.wordWrap": "on",
     "notebook.output.wordWrap": true,
-    "chat.editor.wordWrap": "on"
+    "chat.editor.wordWrap": "on",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic"
 }
