@@ -33,7 +33,7 @@ panel on the left:
 
 Delete existing table
 -- SQLBook: Code
--- Active: 1680526261315@@127.0.0.1@5432@postgres
+-- Active: 1712591797710@@127.0.0.1@5435@postgres
 -- If the table already exists we can drop it:
 -- If it doesn't exist nothing happens
 -- System commands are in upper case and user defined
@@ -98,7 +98,9 @@ Try it yourself!
 -- Make sure to deparate arguments by a semicolon!
 
 
-
+# add two rows
+INSERT INTO drivers VALUES (5, 'Max Verstappen', 'Dutch', 10);
+INSERT INTO drivers VALUES (6, 'Valtteri Bottas', 'Finnish', 9);
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
 
@@ -129,7 +131,7 @@ WHERE nationality = 'German';
 
 -- Evalute OR conditions
 SELECT * FROM drivers
-WHERE (nationality = 'Colombian') OR (nationality = 'German');
+WHERE (nationality = 'Colombia') OR (nationality = 'German');
 
 -- Evaluate AND conditions
 SELECT * FROM drivers
@@ -185,7 +187,8 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-
+SELECT nationality, driver_id FROM drivers
+WHERE victories > 60;
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Groupby + Chaining </span>
@@ -250,7 +253,15 @@ Try it yourself!
 -- SQLBook: Code
 # Write your own code
 
-
+# Subset nationanlities where the maximun number of victories is 71
+SELECT nationality,
+       SUM(victories) AS sum_victories,
+       AVG(victories) AS mean_victories,
+       MIN(victories) AS min_victories,
+       MAX(victories) AS max_victories
+FROM drivers
+GROUP BY nationality
+HAVING MAX(victories) > 71;
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> IV. Merging </span>
@@ -281,7 +292,7 @@ Left-join data
 - ``` LEFT JOIN``` is followed by the secondary dataset
 
 -- SQLBook: Code
--- Active: 1680526261315@@127.0.0.1@5432@postgres
+-- Active: 1712591797710@@127.0.0.1@5435@postgres
 
 SELECT * 
 FROM drivers
